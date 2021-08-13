@@ -9,7 +9,7 @@ public:
         return dp[i][j];
     }
     int longestPalindromeSubseq(string s) {
-        int n = s.size();
+        int n = s.size() ;
         dp.assign(n, vector(n, -1));
         return dfs(0, n - 1, s);
     }
