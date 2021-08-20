@@ -4,7 +4,7 @@ def twoSum(arr, k):
         try:
             if(arr[i+1:].index(k - arr[i]) >= 0): return True
         except:
-            continue;
+            continue
 
 arr = [4, 2, 6, 5, 2]
 print(twoSum(arr, 4))
