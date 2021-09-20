@@ -3,9 +3,9 @@ using namespace std;
 
 int main() {
     int numTestCase; cin >> numTestCase;
-    long long ans = 0;
     for(int i = 0; i < numTestCase; ++i) {
         int numHouses; cin >> numHouses;
+        long long ans = 0;
         string temp; cin >> temp;
         stack<int> s;
         vector<int> forward(numHouses);
