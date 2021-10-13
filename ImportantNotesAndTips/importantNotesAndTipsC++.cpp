@@ -24,3 +24,9 @@
 //Binary Search
     //set mid
     int mid = lo + ((hi - lo) / 2);
+//use {} for ifs, fors, whiles, and DECLERATIONS
+    vector<int> temp = {1, 2, 3, 3, 2, 1};
+    pair<int, int> temp = {1,0};
+
+//declare two-d vector with vector on the inside
+    vector<vector<int>> temp(m, (vector<int> (n, 20)));
