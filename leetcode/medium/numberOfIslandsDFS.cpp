@@ -22,7 +22,7 @@ public:
         int n = grid[0].size();
         int ans = 0;
         //dfs at every location
-        //the reason we do it everywhere is because dfs doesn't extend out of an island so if there is more than one island, that means we haven't "seen" it yet
+        //the reason we do it everywhere is because dfs doesn't extend out to every island so if there is more than one island, that means we haven't "seen" it yet
         for(int i = 0; i < m; ++i) {
             for(int j = 0; j < n; ++j) {
                 if(grid[i][j] == '1') ans++; //if its a new island (we update grid in dfs)
@@ -30,5 +30,6 @@ public:
             }
         }
         return ans;
+        //The key difference between bfs and dfs is that bfs looks at every node surrounding a point, and then explores those nodes, repating the same thing, while dfs finds a node, and then perfroms dfs there until moving on to the next node in dirs
     }
 };

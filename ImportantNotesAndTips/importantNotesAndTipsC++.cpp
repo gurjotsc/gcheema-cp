@@ -30,3 +30,17 @@
 
 //declare two-d vector with vector on the inside
     vector<vector<int>> temp(m, (vector<int> (n, 20)));
+
+//queue<> uses push, pop, front, back
+    queue<int> q;
+    q.push(3);
+    q.push(4);
+    q.push(1);
+    q.push(7);
+    // q becomes 3, 4, 1, 7
+    //think of 3 as "came first so is in front of line while 7 is in the back cuz they came last"
+    q.front(); // 3
+    q.back() // 7
+    q.pop() //removes 3
+    //*Note* you can't pop and equal something at the same time. For instance:
+    int temp = q.pop() //DOESN"T WORK
