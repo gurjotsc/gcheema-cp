@@ -44,3 +44,19 @@
     q.pop() //removes 3
     //*Note* you can't pop and equal something at the same time. For instance:
     int temp = q.pop() //DOESN"T WORK
+
+//Structure binding
+    //is super cool...flex on the interviewer
+    //Allows you to delcare multiple variables at once witha tuple
+        int arr[3] = { 1, 2, 3 };
+        auto[x, y, z] = arr;
+        //x is 1, y is 2, and z is 3
+//ternary operator
+    //variable = if (experession == true) ? then value 1 : else value 2
+        int x = 1; int y = 2;
+        int temp = (x + y == 3) ? 5 : 7; //temp becomes 5
+        int temp2 = (x + y == 4) ? 5 : 7; //temp2 becomes 7
+    //can use with push_back() as well
+        vector<int> temp;
+        temp.push_back((x + y == 3) ? 5 : 7) //5 gets pushed back
+        temp.push_back((x + y == 4) ? 5 : 7) //7 gets pushed back
