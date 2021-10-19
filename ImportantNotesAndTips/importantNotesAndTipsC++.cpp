@@ -1,5 +1,11 @@
 //Handling Strings
     //str1.append(str2) - This concats two strings together. This only works when combining two strings not two chars
+        string one = "one";
+        string two = "two";
+        one.append(two);
+        //one is "onetwo"
+        one += two;
+        //one is also "onetwo"
         //*Note you can't cast a char to string i.e.
         char temp = 'A'; str1.append((string)temp); //won't work
     //To append a char use += i.e:
