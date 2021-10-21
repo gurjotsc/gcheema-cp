@@ -11,6 +11,10 @@
     //To append a char use += i.e:
     char temp = 'A'; str1 += temp;
 
+//set is a BST that orderes data O(logn)
+//unordered_set is a hash O(1)
+//multiset is a set that allows duplicates
+
 //Tuples
     //Use get<iterator of index in tuple>(tuple)
         //i.e.
@@ -36,6 +40,23 @@
 
 //declare two-d vector with vector on the inside
     vector<vector<int>> temp(m, (vector<int> (n, 20)));
+
+//.erase needs an iterator
+int i = someNumber;
+unordered_map<int, int> m;
+unordered_set<int> s;
+m.erase(m.find(i));
+s.erase(s.find(i));
+
+vector<int> v = {1,2,3,4,5};
+vector.erase(myvector.begin()+1) //v is {1,3,4,5}
+
+//vector resizing
+vector<int> v = {1,2,3,4,5};
+v.resize(4) //v is {1,2,3,4}
+
+vector<int> v = {1,2,3,4,5};
+v.resize(8) //v is {1,2,3,4,5,0,0,0}
 
 //queue<> uses push, pop, front, back
     queue<int> q;
