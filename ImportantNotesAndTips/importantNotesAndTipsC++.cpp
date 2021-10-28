@@ -10,6 +10,16 @@
         char temp = 'A'; str1.append((string)temp); //won't work
     //To append a char use += i.e:
     char temp = 'A'; str1 += temp;
+    //When looking at the last element of a string, you actually store the string sizes as memory so subtracting more than s.size() is invalid and will cause addressing issues
+    string s = "temp";
+    s.size() - 1 = 3
+    s.size() - 2 = 2
+    s.size() - 3 = 1
+    s.size() - 4 = 0
+    s.size() - 5 = ERROR //this will give you an error because you can't use .size() to index out of a string
+    s.size() - (-1) = //google this because idk (online compiler is ok with it but leetcode says it is wrong)
+
+
 
 //set is a BST that orderes data O(logn)
 //unordered_set is a hash O(1)
