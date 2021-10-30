@@ -1,6 +1,6 @@
 #string slicing
-    #a = "Sammy Shark!"
-        a[beginning:middle:step]
+    a = "Sammy Shark!"
+        a[beginning:end:step]
         a[5:10] = " Shar"
         a[5:10:2] = " hr"
         a[:-1] = "Sammy Shark"
