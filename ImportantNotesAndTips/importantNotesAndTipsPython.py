@@ -25,6 +25,6 @@
         print(list(result))
         #prints [2, 4, 6, 8]
     #when parsing you need to use the following or else you are gonna get the char/string of the input
-    map(int, input.split()) #all this does is store the input.split as an int
+    map(int, input.split()) #all this does is store the input.split() as an int
 #list()
     #converts to a list
