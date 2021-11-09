@@ -97,3 +97,42 @@ v.resize(8) //v is {1,2,3,4,5,0,0,0}
         vector<int> temp;
         temp.push_back((x + y == 3) ? 5 : 7) //5 gets pushed back
         temp.push_back((x + y == 4) ? 5 : 7) //7 gets pushed back
+//How to traverse an unordered_map
+    int arr[] = { 1, 1, 2, 1, 1, 3, 4, 3 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+    unordered_map<int, int> m;
+    for (int i = 0; i < n; i++)
+        m[arr[i]]++; //stores freq of arr
+    cout << "Element Frequency" << endl;
+    for (auto i : m)
+        cout << i.first << "    " << i.second
+             << endl;
+    return 0;
+//map vs unordered_map vs multimap
+//map
+    //map is a self-balancing BST so O(logn) lookups and O(logn) insertion/deletion
+    //Inserts the elements in order for you
+    //Useful if you need to print elements in order
+//unordered_map
+    //unordered_map uses a hash table so average case O(1) lookups and insertion/deletion 
+        //Wosrt case is O(n) lookups and insertion/deletion
+    //unordered (obviously)
+//multimap
+    //just a map but can store multiple elements
+    //Need to insert pairs unlike other maps
+    multimap <int, int> m
+    m.insert(pair <int, int> (1, 40))
+    m.insert(pair <int, int> (2, 40))
+    m.insert(pair <int, int> (6, 40))
+    m.insert(pair <int, int> (6, 10))
+    m.insert(pair <int, int> (6, 30))
+//Bounds for SORTED arrays
+    // lower_bound (Iterator first, Iterator last, const val)
+    // upper_bound (Iterator first, Iterator last, const val)
+    // lower_bound returns an iterator pointing to the first element in the range [first,last) which has a value NOT less than ‘val’.
+    // upper_bound returns an iterator pointing to the first element in the range [first,last) which has a value greater than ‘val’.
+    vector<int> v = {5, 6, 7, 7, 6, 5, 5, 6};
+    sort(v.begin(), v.end()); //5 5 5 6 6 6 7 7
+    lower_bound(v.begin(), v.end(), 6) - v.begin() //returns index of first 6 at idx 3 since its the first value NOT less than val (6)
+    upper_bound(v.begin(), v.end(), 6) - v.begin() //returns index of first 7 at idx 6 since its the first value greater than val (6)
+    //- v.begin() is because the bounds return iterators, not ints
