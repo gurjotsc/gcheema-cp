@@ -27,7 +27,7 @@ int main() {
     for(int i = 0; i < n; ++i) {
         ans = max(ans, m[prefix[i]] - i);
     }
-    if(!ans) ++ans;
+    //if(!ans) ++ans;
 
     cout << ans;
 
