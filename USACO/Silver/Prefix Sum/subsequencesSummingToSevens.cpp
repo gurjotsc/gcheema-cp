@@ -1,16 +1,16 @@
 #include <bits/stdc++.h>
 #include <unordered_map>
 using namespace std;
-#define ll long long;
+using ll = long long;
 
 int main() {
     freopen("div7.in", "r", stdin);
     freopen("div7.out", "w", stdout);
 
     int n; cin >> n;
-    vector<int> prefix(n);
+    vector<ll> prefix(n);
     cin >> prefix[0];
-    unordered_map<int, int> m;
+    unordered_map<ll, int> m;
 
     int ans = 0;
     for(int i = 1; i < n; ++i) {
