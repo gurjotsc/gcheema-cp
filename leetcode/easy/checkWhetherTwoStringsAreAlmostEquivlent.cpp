@@ -8,7 +8,7 @@ public:
         for(auto i : word1) ++m1[i];
         for(auto i : word2) ++m2[i];
 
-        //compare frequenceis
+        //compare frequencies
         for(auto i : m1) if (m2[i.first] > i.second + 3 || m2[i.first] < i.second - 3) return false;
         for(auto i : m2) if (m1[i.first] > i.second + 3 || m1[i.first] < i.second - 3) return false;
 
