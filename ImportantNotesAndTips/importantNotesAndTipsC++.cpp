@@ -68,6 +68,9 @@ v.resize(4) //v is {1,2,3,4}
 vector<int> v = {1,2,3,4,5};
 v.resize(8) //v is {1,2,3,4,5,0,0,0}
 
+vector<int> v = {1,2,3,4,5};
+v.resize(8, 9) //v is {1,2,3,4,5,9,9,9}
+
 //queue<> uses push, pop, front, back
     queue<int> q;
     q.push(3);
@@ -114,11 +117,14 @@ v.resize(8) //v is {1,2,3,4,5,0,0,0}
     //Inserts the elements in order for you
     //Useful if you need to print elements in order
 //unordered_map
-    //unordered_map uses a hash table so average case O(1) lookups and insertion/deletion 
+    //unordered_map uses a hash table so average case O(1) lookups and insertion/deletion
         //Wosrt case is O(n) lookups and insertion/deletion
     //unordered (obviously)
 //multimap
     //just a map but can store multiple elements
+    //This means it is sorted and has the same runtimes
+    //If two keys are the same, they are NOT sorted by value, rather in the order they were inserted
+        //in our case (6,40) is first then (6,10), then (6,30)
     //Need to insert pairs unlike other maps
     multimap <int, int> m
     m.insert(pair <int, int> (1, 40))
