@@ -142,3 +142,12 @@ v.resize(8, 9) //v is {1,2,3,4,5,9,9,9}
     lower_bound(v.begin(), v.end(), 6) - v.begin() //returns index of first 6 at idx 3 since its the first value NOT less than val (6)
     upper_bound(v.begin(), v.end(), 6) - v.begin() //returns index of first 7 at idx 6 since its the first value greater than val (6)
     //- v.begin() is because the bounds return iterators, not ints
+
+//Zero Initialization
+    int array[5]{ 7, 4, 5 }; // only initialize first 3 elements
+    //array = {7, 4, 5, 0, 0}
+    int array[5]{ }; //array = {0, 0, 0, 0, 0}
+    //Omitted Length
+    //The two lines below are the same
+    int array[5]{ 0, 1, 2, 3, 4 }; // explicitly define the length of the array
+    int array[]{ 0, 1, 2, 3, 4 }; // let the initializer list set length of the array
