@@ -61,7 +61,10 @@ s.erase(s.find(i));
 vector<int> v = {1,2,3,4,5};
 vector.erase(myvector.begin()+1) //v is {1,3,4,5}
 
-//vector resizing
+//vector sizing and resizing
+vector<vector<int>> vec(n , vector<int> (m, 0)); //declares a nxm grid of 0's
+vector<vector<int>> vec(n , vector<int> (m)); //also declares a nxm grid of 0's
+
 vector<int> v = {1,2,3,4,5};
 v.resize(4) //v is {1,2,3,4}
 
