@@ -14,6 +14,12 @@
     a.split() = ["Sammy", "Shark"]
     b.split(",") = ["Sammy Shark", "Peter Porcupine", "Charlie Camel!"]
     b.split(",", 1) = ["Sammy Shark", "Peter Porcupine, Charlie Camel!""]
+#declare multiple variables in a line
+    a, b = 100, 200
+        #a is 100 and b is 200
+    a = b = 100
+        #a and b are both 100
+# 200
 #map()
     #all map does is take a function and pass the second parameter into it.
         def addition(n):

@@ -1,22 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long;
+using ll = long long;
 
 int main() {
     //freopen(".in", "r", stdin);
     //freopen(".out", "w", stdout);
 
     int n; cin >> n;
-    vector<long long> prefix(n+1);
-    long long minNum = 0;
-    long long maxNum = 0;
-
+    vector<ll> prefix(n+1);
     for(int i = 1; i <= n; ++i) {
         cin >> prefix[i];
         prefix[i] += prefix[i-1];
-        minNum = min(minNum, prefix[i]);
-        maxNum = max(maxNum, prefix[i]);
     }
 
-    cout << maxNum - minNum;
+    ll ans = prefix[1], minSum = prefix[0];
+    for(int i = 1; i <= n; ++i) {
+        ans = max(ans, prefix[i] - minSum); //choses the max out of our ans and what our curr ans is
+        minSum = min(minSum, prefix[i]); //minSum stores the smallest number we have seen so far
+    }
+
+    cout << ans;
 }

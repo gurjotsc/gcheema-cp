@@ -19,7 +19,8 @@
     s.size() - 5 = ERROR //this will give you an error because you can't use .size() to index out of a string
     s.size() - (-1) = //google this because idk (online compiler is ok with it but leetcode says it is wrong)
 
-
+//delcare multiple variables in one line
+    int a = 1, b = 2, c = 3;
 
 //set is a BST that orderes data O(logn)
 //unordered_set is a hash O(1)
