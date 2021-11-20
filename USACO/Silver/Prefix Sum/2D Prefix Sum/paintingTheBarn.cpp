@@ -20,9 +20,9 @@ int main() {
     int ans = 0;
     for(int i = 0; i < 1001; ++i) {
         for(int j = 0; j < 1001; ++j) {
-            if(i > 0) dp[i][j] += dp[i-1][j];
-            if(j > 0) dp[i][j] += dp[i][j-1];
-            if(i > 0 && j > 0) dp[i][j] -= dp[i-1][j-1];
+            if(i > 0) dp[i][j] += dp[i-1][j]; //add the value below the current cell
+            if(j > 0) dp[i][j] += dp[i][j-1]; //add the value to the left
+            if(i > 0 && j > 0) dp[i][j] -= dp[i-1][j-1]; //in case you double count the values above and left, this removed any double counted coats
             ans += dp[i][j] == k;
         }
     }
