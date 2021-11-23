@@ -19,6 +19,10 @@
     s.size() - 5 = ERROR //this will give you an error because you can't use .size() to index out of a string
     s.size() - (-1) = //google this because idk (online compiler is ok with it but leetcode says it is wrong)
 
+//begin and end iterators
+vec.begin(); vec.end(); //use .begin() and .end() for vectors
+begin(s); end(s); //use begin() and end() for strings
+
 //delcare multiple variables in one line
     int a = 1, b = 2, c = 3;
 
@@ -155,3 +159,8 @@ v.resize(8, 9) //v is {1,2,3,4,5,9,9,9}
     //The two lines below are the same
     int array[5]{ 0, 1, 2, 3, 4 }; // explicitly define the length of the array
     int array[]{ 0, 1, 2, 3, 4 }; // let the initializer list set length of the array
+//In line set creation
+    //given string s, stores all characters once in between an index i and n-1
+    unordered_set<char>(begin(s) + i, begin(s) + n-1).size();
+    //my guess is it is inclusive to exclusive, i.e [start, end)
+    //see if this expands to maps?
