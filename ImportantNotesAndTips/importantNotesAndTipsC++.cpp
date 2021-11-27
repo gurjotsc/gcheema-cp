@@ -79,6 +79,12 @@ v.resize(8) //v is {1,2,3,4,5,0,0,0}
 vector<int> v = {1,2,3,4,5};
 v.resize(8, 9) //v is {1,2,3,4,5,9,9,9}
 
+//vector min and max
+    vector<int> nums = {1, 2, 3, 7, 5, 1};
+    int a = *min_element(begin(nums), end(nums)); //a is 1
+    int b = *max_element(begin(nums), end(nums)); //b is 7
+
+
 //queue<> uses push, pop, front, back
     queue<int> q;
     q.push(3);
