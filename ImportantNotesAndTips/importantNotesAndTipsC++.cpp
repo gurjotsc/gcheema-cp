@@ -18,6 +18,15 @@
     s.size() - 4 = 0
     s.size() - 5 = ERROR //this will give you an error because you can't use .size() to index out of a string
     s.size() - (-1) = //google this because idk (online compiler is ok with it but leetcode says it is wrong)
+    //string.find()
+    //returns true if the string exists as a contiguous substring in str
+        //string::npos is something to memorize, like map.find(i) == map.end() or something
+            //further explanation: it is a static unsigned int delcared as -1 (because that is the highest unsigned
+            //size_t type). size_t is defined in certain libraries
+    string str = "geeksforgeeks a computer science";
+    str.find("geeks") != string::npos // returns true
+    str.find("geeeks") != string::npos // returns false
+
 
 //begin and end iterators
 vec.begin(); vec.end(); //use .begin() and .end() for vectors
