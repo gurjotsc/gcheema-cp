@@ -29,8 +29,19 @@
 
 
 //begin and end iterators
-vec.begin(); vec.end(); //use .begin() and .end() for vectors
-begin(s); end(s); //use begin() and end() for strings
+//iterators are like pointers that point to elements
+vec.begin(); vec.end(); //use .begin() and .end() for vectors/strings
+begin(s); end(s); //use begin() and end() for vectors/strings
+*vec.begin() / *begin(s) //both return the first element by dereferencing the iterator (which is a pointer)
+//**Important, vec.end()/end(s) return an iterator pointing the the memory AFTER the array
+//When calling a function that uses iterators, you can think of the function as calling [vec.begin(), vec.end()) inclusive - exclusive
+//thus if you want to call say reverse(vec.begin(), vec.begin() + 4) it will call it on index [0, 3]
+    for(auto it = vec.begin(); it < vec.end(); ++it) {
+        cout << *it; //prints out all elements in vec
+    }
+    for(auto it = vec.begin() + 1; it <= vec.end(); ++it) {
+        cout << *prev(it); //also prints out all the elements in vec
+    }
 
 //delcare multiple variables in one line
     int a = 1, b = 2, c = 3;
