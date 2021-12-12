@@ -42,6 +42,12 @@ begin(s); end(s); //use begin() and end() for vectors/strings
     for(auto it = vec.begin() + 1; it <= vec.end(); ++it) {
         cout << *prev(it); //also prints out all the elements in vec
     }
+    //for a map (ordered)
+    //key thing to note here is that unlike a vector, m.begin() and m.end() point to the first and last elements unlike a vector
+    //which points to the memory one past the alst element
+    for(auto it = m.begin(); it <= m.end(); ++it) {
+        cout << it->first << " " << it->second; //prints out all elements in the map in key value pairs
+    }
 
 //delcare multiple variables in one line
     int a = 1, b = 2, c = 3;
@@ -145,6 +151,14 @@ v.resize(8, 9) //v is {1,2,3,4,5,9,9,9}
         cout << i.first << "    " << i.second
              << endl;
     return 0;
+
+//How to traverse a map(orderd) using iterator (it)
+    //key thing to note here is that unlike a vector, m.begin() and m.end() point to the first and last elements unlike a vector
+    //which points to the memory one past the alst element
+    for(auto it = m.begin(); it <= m.end(); ++it) {
+        cout << it->first << " " << it->second; //prints out all elements in the map in key value pairs
+    }
+
 //map vs unordered_map vs multimap
 //map
     //map is a self-balancing BST so O(logn) lookups and O(logn) insertion/deletion
