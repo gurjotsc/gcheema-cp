@@ -42,12 +42,10 @@ begin(s); end(s); //use begin() and end() for vectors/strings
     for(auto it = vec.begin() + 1; it <= vec.end(); ++it) {
         cout << *prev(it); //also prints out all the elements in vec
     }
-    //for a map (ordered)
-    //key thing to note here is that unlike a vector, m.begin() and m.end() point to the first and last elements unlike a vector
-    //which points to the memory one past the alst element
-    for(auto it = m.begin(); it <= m.end(); ++it) {
-        cout << it->first << " " << it->second; //prints out all elements in the map in key value pairs
+    for(auto it = vec.end()-1; it >= vec.begin(); --it) {
+        cout << *it; //prints out all elements in vec backwards
     }
+    //see below for how to iterate through a map
 
 //delcare multiple variables in one line
     int a = 1, b = 2, c = 3;
@@ -140,24 +138,40 @@ v.resize(8, 9) //v is {1,2,3,4,5,9,9,9}
         vector<int> temp;
         temp.push_back((x + y == 3) ? 5 : 7) //5 gets pushed back
         temp.push_back((x + y == 4) ? 5 : 7) //7 gets pushed back
-//How to traverse an unordered_map
+//How to traverse an unordered_map or regular map
     int arr[] = { 1, 1, 2, 1, 1, 3, 4, 3 };
     int n = sizeof(arr) / sizeof(arr[0]);
-    unordered_map<int, int> m;
+    unordered_map<int, int> m1;
+    map<int, int> m2;
     for (int i = 0; i < n; i++)
-        m[arr[i]]++; //stores freq of arr
+        m1[arr[i]]++; //stores freq of arr
+        m2[arr[i]]++; //stores freq of arr ordered by value
     cout << "Element Frequency" << endl;
-    for (auto i : m)
+     for (auto i : m1)
         cout << i.first << "    " << i.second
              << endl;
-    return 0;
+     for (auto j : m2)
+        cout << j.first << "    " << j.second
+             << endl;
 
-//How to traverse a map(orderd) using iterator (it)
-    //key thing to note here is that unlike a vector, m.begin() and m.end() point to the first and last elements unlike a vector
-    //which points to the memory one past the alst element
-    for(auto it = m.begin(); it <= m.end(); ++it) {
-        cout << it->first << " " << it->second; //prints out all elements in the map in key value pairs
-    }
+return 0;
+
+//How to traverse an unordered or ordered map using iterator (it)
+    //key thing to note here is that it is like a vector, m.begin() points to the first element and m.end() is one past the last element
+    //**NOTE unlike a vector you must use prev() instead of m.end() - 1, since a tree is stored in a tree im guessin, the elemnts in memory are not one after another, instead
+    //the tree is pointing to elements
+        //because of this, idk why ++it and --it work
+
+    //**NOTE unlike a vector, you can't use it < m.end() due to the aformentioned reason
+    for (auto it = m.begin(); it != m.end(); ++it)
+           cout << it->first << "	 " << it->second
+               << endl;
+    //this iterates backward
+
+
+    for (auto it = prev(m.end()); it != prev(m.begin()); --it)
+           cout << it->first << "	 " << it->second
+               << endl;
 
 //map vs unordered_map vs multimap
 //map
