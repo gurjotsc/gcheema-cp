@@ -1,2 +1,6 @@
 "number of ways" or "how many ways" or "possible ways" etc. == DP (combinatorics?)
 I think "Subarrays" == dp or prefix typically
+
+ Inorder (Left, Root, Right)
+ Preorder (Root, Left, Right)
+ Postorder (Left, Right, Root)
