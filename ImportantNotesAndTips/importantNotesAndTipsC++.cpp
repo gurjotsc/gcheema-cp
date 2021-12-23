@@ -218,3 +218,17 @@ return 0;
     unordered_set<char>(begin(s) + i, begin(s) + n-1).size();
     //my guess is it is inclusive to exclusive, i.e [start, end)
     //see if this expands to maps?
+
+//Shift Operators
+/*
+From gfg
+Eg: N<<i (N: first operand, i: second operand)
+Takes two numbers, left shifts the bits of the first operand, the second operand decides the number of places to shift.
+Or in other words left shifting an integer “x” with an integer “y” denoted as ‘(x<<y)’ is equivalent to multiplying x with 2^y (2 raised to power y).
+
+Eg: N>>i (N: first operand, i: second operand)
+
+Takes two numbers, right shifts the bits of the first operand, the second operand decides the number of places to shift.
+In other words right shifting an integer “x” with an integer “y” denoted as ‘(x>>y)‘ is equivalent to dividing x with 2^y.
+
+*/
