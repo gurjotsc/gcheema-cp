@@ -26,6 +26,11 @@
     string str = "geeksforgeeks a computer science";
     str.find("geeks") != string::npos // returns true
     str.find("geeeks") != string::npos // returns false
+    //returns a substring in the format [first, last)
+        //depending on where you are running your code this could be in the format [forst, last]. Leetcode uses the [first, last) format
+    string s = "abcde";
+    int i = 1, j = 3;
+    s.substr(i, j); // returns "bc"
 
 
 //begin and end iterators
@@ -87,8 +92,17 @@ unordered_set<int> s;
 m.erase(m.find(i));
 s.erase(s.find(i));
 
+//Removes from the vector either a single element (position) or a range of elements ([first,last)).
 vector<int> v = {1,2,3,4,5};
-vector.erase(myvector.begin()+1) //v is {1,3,4,5}
+v.erase(v.begin()+1, v.begin()+3) // v is {1, 4, 5}
+v.erase(v.begin()+1) //v is {1,3,4,5}
+v.erase(v.begin()+1, v.end()-1); // v is {1, 5}
+v.erase(v.begin()+1, v.end()); // v is {1} //note v.end() is the element after "5" but since the second parameter is exclusive, it erases till the last index
+
+string s = "abcde";
+s.erase(1, 3); // s is "ae" READ THIS AS STARTING AT INDEX 1 ERASE 3 ELEMENTS ** YOU CAN"T DIRETLY INDEX ON vector.erase()
+s.erase(s.begin() + 0, s.begin() + 4); // s is "e", *note this is still the same [first,last) syntax as vector.erase()
+
 
 //vector sizing and resizing
 vector<vector<int>> vec(n , vector<int> (m, 0)); //declares a nxm grid of 0's
