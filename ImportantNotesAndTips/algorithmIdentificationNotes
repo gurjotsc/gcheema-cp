@@ -4,3 +4,17 @@ I think "Subarrays" == dp or prefix typically
  Inorder (Left, Root, Right)
  Preorder (Root, Left, Right)
  Postorder (Left, Right, Root)
+
+if the question has to do directly with numerical properties, think of binary representations
+if the question has to do with even and odd, think of binary representations
+    evens will have 0 in the rightmost position while odds will have 1
+
+From gfg
+Eg: N<<i (N: first operand, i: second operand)
+Takes two numbers, left shifts the bits of the first operand, the second operand decides the number of places to shift.
+Or in other words left shifting an integer “x” with an integer “y” denoted as ‘(x<<y)’ is equivalent to multiplying x with 2^y (2 raised to power y).
+
+Eg: N>>i (N: first operand, i: second operand)
+
+Takes two numbers, right shifts the bits of the first operand, the second operand decides the number of places to shift.
+In other words right shifting an integer “x” with an integer “y” denoted as ‘(x>>y)‘ is equivalent to dividing x with 2^y.
