@@ -229,8 +229,11 @@ return 0;
     int array[]{ 0, 1, 2, 3, 4 }; // let the initializer list set length of the array
 //In line set creation
     //given string s, stores all characters once in between an index i and n-1
-    unordered_set<char>(begin(s) + i, begin(s) + n-1).size();
-    //my guess is it is inclusive to exclusive, i.e [start, end)
+    string temp = "temp string";
+    int i = 1;
+    int j = 6;
+    unordered_set<char> s (begin(temp) + i, begin(temp) + j);
+    //in the format [first, last)
     //see if this expands to maps?
 
 //Shift Operators
