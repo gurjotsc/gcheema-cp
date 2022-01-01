@@ -180,9 +180,12 @@ return 0;
     for (auto it = m.begin(); it != m.end(); ++it)
            cout << it->first << "	 " << it->second
                << endl;
+    //also works got unordered_map
+    for(auto &p : m) { //no need for & but it will run slower if you use it because you then need to copy
+        cout << p.first << p.second
+        << endl;
+    }
     //this iterates backward
-
-
     for (auto it = prev(m.end()); it != prev(m.begin()); --it)
            cout << it->first << "	 " << it->second
                << endl;
