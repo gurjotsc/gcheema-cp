@@ -2,7 +2,7 @@
 I think "Subarrays" == dp or prefix typically
 
 **Whenever you see a tree, have these in the back of your mind
- Inorder (Left, Root, Right)
+ Inorder (Left, Root, Right) (BST)
  Preorder (Root, Left, Right)
  Postorder (Left, Right, Root)
 
