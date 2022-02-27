@@ -3,60 +3,64 @@ using namespace std;
 using ll = long long;
 
 map<int, int> m;
-vector<int> distances(1001, 0);
+vector<int> dist(1001, 0);
 void bfs() {
     //preproccess graph distancese
     queue<pair<int, int>> q; //stores number and distances
     q.push({1, 0});
-    distances[1] = 0;
+    dist[1] = 0;
     while(!q.empty()) {
-        auto curr = q.front(); q.pop();
-        int div = 1;
-        while(div <= curr.first) { //O(sqrt(n))?
-            if(curr.first + (curr.first/div) < 1001 && !distances[curr.first + (curr.first/div)]) {
-                q.push({curr.first + (curr.first/div), curr.second + 1});
-                distances[curr.first + (curr.first/div)] = curr.second + 1;
+        int n = q.size();
+        while(n--) {
+            auto curr = q.front(); q.pop();
+            int div = 1;
+            while(div*div <= curr.first) { //O(sqrt(n))?
+                ll x = curr.first + (curr.first/div);
+                ll y = curr.first + (curr.first/(curr.first/div));
+                if(x < 1001 && !dist[x]) {
+                    q.push({x, curr.second+1});
+                    dist[x] = curr.second + 1;
+                }
+                if(y < 1001 && !dist[y]) {
+                    q.push({y, curr.second+1});
+                    dist[y] = curr.second + 1;
+                }
+                ++div;
             }
-            ++div;
         }
+        
 
     }
 }
 
-int solve() {
+
+
+ll solve() {
     int n, k; cin >> n >> k;
-    vector<int> b(n);
-    vector<int> c(n);
-    vector<int> dist(n);
-    vector<int> dp(k);
-    int res = 0;
+    vector<ll> b(n);
+    vector<ll> c(n);
+    vector<ll> dp(k+1, -1);
+    ll res = 0ll;
     for(auto& i : b) cin >> i;
     for(auto& i : c) cin >> i;
-    bfs();
-    for(int i = 0; i < 100; ++i) cout << dist[i] << " ";
-    cout << "\n";
-    for(int i = 0; i < n; ++i) dist[i] = distances[b[i]];
     
-    for(int i = 0; i < n; ++i) {
-        for(int j = 0; j < k; ++j) {
-            if(j + dist[i] < k) {
-                dp[j + dist[i]] = dp[j] + c[i];
-                res = max(res, dp[j + dist[i]]);
-            }
+    dp[0] = 0;
+    for(int i = 0; i < n; ++i)
+        for(int j = k; j >= 0; --j) {
+            if(dp[j] == -1 || j+dist[b[i]] > k) continue;
+            auto idx = j+dist[b[i]];
+            dp[idx] = max(dp[idx], dp[j] + c[i]);
+            res = max(res, dp[idx]);
         }
-    }
     return res;
-
 }
+                     
 int main() {
+    cin.tie(0);
+    ios::sync_with_stdio(0);
+
     int t; cin >> t;
-    while(t--) {
-        cout << solve() << "\n";
-    }
+    bfs();
+    while(t--) cout << solve() << "\n";
+    
 }
-
-// 1 7 5 2
-// 2 6 5 2
-
-// distnaces
-// 0 0 1 2 3 4 3 5
