@@ -26,11 +26,11 @@ int main() {
 
     for(int i = 0; i < check.size(); ++i) {
         if(check[i] != t[j]) {
-            cout << ":("
-        }
+            cout << ":(";
+            return -1;
+        } 
+        else ++j;
     }
-    if(s.size() = (n-(nPrime/2))) cout << s;
-    else cout << ":(";
-    
+    cout << s;   
 
 }
