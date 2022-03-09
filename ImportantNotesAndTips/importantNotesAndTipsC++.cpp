@@ -253,3 +253,16 @@ In other words right shifting an integer “x” with an integer “y” denoted
 
 */
 __builtin_popcountll //counts how many ones there are in O(1) in binary
+
+
+//Comparators
+bool comp1(pair<int, int> a, pair<int, int> b){
+	return (a.second < b.second);
+}
+//this will sort a vector of pairs by the second value, lowest to greatest
+//its saying IF a.second is less than another b.second, THEN a should come BEFORE b 
+bool comp2(vector<int> a, vector<int> b){
+	return (a[1] < b[1]);
+}
+//this will sort a vector of vector<int> of size 2 by the second value, lowest to greatest
+//its saying IF a[1] is less than another b[1], THEN a should come BEFORE b 
