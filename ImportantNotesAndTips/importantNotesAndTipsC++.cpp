@@ -252,3 +252,4 @@ Takes two numbers, right shifts the bits of the first operand, the second operan
 In other words right shifting an integer “x” with an integer “y” denoted as ‘(x>>y)‘ is equivalent to dividing x with 2^y.
 
 */
+__builtin_popcountll //counts how many ones there are in O(1) in binary
