@@ -33,6 +33,10 @@
     s.substr(i, j); // returns "bc"
 
 
+//Note negative%positve is a positive
+//i.e
+-11%7 == 4
+
 //begin and end iterators
 //iterators are like pointers that point to elements
 vec.begin(); vec.end(); //use .begin() and .end() for vectors/strings
