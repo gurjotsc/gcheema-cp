@@ -48,3 +48,10 @@
     b = 2
     x = a if (a>b) else b #returns a if a is larger than b, else b. x = max(a,b), x would be assigned 3
     x += a if (a>b) else b #returns x += a if a is larger than b, else x += b. x += max(a,b). x would become 8
+
+
+a, b = min(nums), max(nums)
+while a:
+	a, b = b % a, a
+return b
+#B gets the original vale of a not the new modulo value
