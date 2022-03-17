@@ -3,34 +3,39 @@ using namespace std;
 using ll = long long;
 const ll inf = 1e18;
 
-ll sum(ll i) {
-	return (((i)*(i+1))/2);
-}
+ll sum(ll i) {return (((i)*(i+1))/2);}
 
 ll solve() {
     int n; cin >> n;
     vector<ll> k(n);
     vector<ll> h(n);
-    ll mana = 0ll;
+    vector<vector<ll>> mana;
+    vector<vector<ll>> merge;
     for(auto& i : k) cin >> i;
     for(auto& i : h) cin >> i;
 
-    for(int i = 0; i < n; ++i) {
-        if(!i) {
-			mana += sum(h[i]);
-            continue;
-            // mana.push_back(h[i]);
-        }
-        else if(k[i] - k[i-1] >= h[i]) mana += sum(h[i]);
+    //stores when you need to start chargin up until your cast (k[i])
+    for(int i = 0; i < n; ++i) mana.push_back({k[i]-h[i], k[i]});
+    //sorts by mana[0] aka what needs to start charging up first
+	sort(mana.begin(), mana.end());
+    for(auto i : mana) cout << i[0] << " " << i[1] << "/";
+	cout << "\n";
+    merge.push_back(mana[0]);
+    for(int i = 1; i < n; ++i) {
+        if(mana[i][0] > merge[merge.size()-1][1]) merge.push_back(mana[i]);
         else {
-			diff = k[i]-k[i-1];
-			mana += ((mana*diff) + (sum[diff]);
+			merge[merge.size()-1][1] = max(merge[merge.size()-1][1], mana[i][1]);
+			if(mana[i-1][0] == mana[i-1][1]-1) ++merge[merge.size()-1][0];
 		}
-        // if(k[i] - k[i-1] >= h[i]) mana.push_back(h[i]);
-        // else mana[mana.size()-1] += (k[i] - k[i-1]);
     }
 
-    return mana;
+
+	for(auto i : merge) cout << i[0] << " " << i[1] << "/";
+	cout << "\n";
+    ll res = 0ll;
+	for(auto i : merge) res += sum(i[1] - i[0]);
+
+    return res;
 }
 int main() {
     cin.tie(0);
@@ -38,14 +43,3 @@ int main() {
     int t; cin >> t;
     while(t--) cout << solve() << "\n";
 }
-
-// 3
-// 1
-// 6
-// 4
-// 2
-// 4 5
-// 2 2
-// 3
-// 5 7 9
-// 2 1 2
