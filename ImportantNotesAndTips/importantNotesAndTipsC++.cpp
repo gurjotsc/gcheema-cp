@@ -270,3 +270,12 @@ bool comp2(vector<int> a, vector<int> b){
 }
 //this will sort a vector of vector<int> of size 2 by the second value, lowest to greatest
 //its saying IF a[1] is less than another b[1], THEN a should come BEFORE b 
+
+
+//Floor and Ceil take in doubles as parameters
+//accurate Floor (used to floor both positive and negative quotients because c++ ceils integer division on negatives) (i.e -10/3 = -3 not -4)
+ll accFloor(ll num, ll div) {
+    ll val = num/div;
+    if(val*div > num) --val;
+    return val;
+}
