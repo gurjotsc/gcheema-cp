@@ -32,7 +32,8 @@ void solve() {
     for(int i = 0; i <= n; ++i) {
         if(i > 0 && !freq[i-1]) {
             //you have no more numbers left to change then break
-            //all future numbers will require this number to be possible in the array, but clearly it isn't so all future numbers should output -1 as well
+            //all future numbers(mexs) will require the past i to be in the array. This means that after we pop, we need to see what else is available in the stack. If there is nothing available (even if we had numbers in their in the past that were popped to allow for previous mexes) then break because you have no numbers to update
+            //If there is nothing in the stack, then you can output -1 for all future i's since you don't have any numbers left in the stack to make i a mex
             if(s.empty()) break; 
 
             auto temp = s.top(); s.pop();

@@ -20,7 +20,7 @@ vector<int> solve() {
         //start searching for a cycle there
         //if you find a repeat thats already filled in res, the "cycle" vector should always output the same thing for an index
         vector<int> cycle;
-        int cycleStart = querey(i);
+        int cycleStart = querey(i); //you don't need to push this into cycle since the last curr will be cycleStart
         int curr = querey(i);
         cycle.push_back(curr);
         while(curr != cycleStart) {
