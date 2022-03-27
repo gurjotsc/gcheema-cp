@@ -260,11 +260,13 @@ __builtin_popcountll //counts how many ones there are in O(1) in binary
 
 
 //Comparators
+//C++ SHOULD RETURN FALSE ON EQUAL ELEMENTS
 bool comp1(pair<int, int> a, pair<int, int> b){
 	return (a.second < b.second);
 }
-//this will sort a vector of pairs by the second value, lowest to greatest
+//this will sort a vector of pairs by the second value, lowest to greatest NO NEED TO PASS IN vector<pair<int, int>>
 //its saying IF a.second is less than another b.second, THEN a should come BEFORE b 
+//note pairs automatically sort by .first if a comparator isn't specified
 bool comp2(vector<int> a, vector<int> b){
 	return (a[1] < b[1]);
 }
