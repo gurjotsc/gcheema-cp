@@ -42,9 +42,39 @@ std::ostream& operator <<(std::ostream& output, const std::unordered_set<T>& dat
 }
 
 
-int solve() {
-    int n, u; cin >> n >> u;
-    return n-u;
+void solve() {
+    freopen("bcount.in", "r", stdin);
+    freopen("bcount.out", "w", stdout);
+    int n, qSz; cin >> n >> qSz;
+    vector<int> b(n); cin >> b;
+    vector<pii> q(qSz);
+    for(auto& i : q) cin >> i.first >> i.second;
+    vector<int> pre1(n); 
+    vector<int> pre2(n);
+    vector<int> pre3(n);
+
+    pre1[0] = (b[0] == 1) ? 1 : 0;
+    pre2[0] = (b[0] == 2) ? 1 : 0;
+    pre3[0] = (b[0] == 3) ? 1 : 0;
+
+    for(int i = 1; i < n; ++i) {
+        pre1[i] = pre1[i-1]+(b[i] == 1);
+        pre2[i] = pre2[i-1]+(b[i] == 2);
+        pre3[i] = pre3[i-1]+(b[i] == 3);
+    }
+    
+    for(auto& i : q) {
+        int a = i.first-1, b = i.second-1;
+        if(a) {
+            cout << pre1[b]-pre1[a-1] << " "
+                 << pre2[b]-pre2[a-1] << " "
+                 << pre3[b]-pre3[a-1];    
+        }
+        else cout << pre1[b] << " " << pre2[b] << " " << pre3[b];
+        cout << "\n";
+    }
+
+
 }
 
 
@@ -52,6 +82,5 @@ int main() {
     cin.tie(0);
     ios::sync_with_stdio(0);
     
-    // int t; cin >> t;
-    // while (t--) cout << solve() << "\n";
+    solve();
 }
