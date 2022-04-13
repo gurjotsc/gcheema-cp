@@ -53,10 +53,25 @@ ll modPow(ll a, ll b, ll m) {
 }
 
 
-int solve() {
+ll solve() {
     int n, x, y; cin >> n >> x >> y;
     vector<int> a(n+1); 
+    ll res = 0;
     for(int i = 1; i <= n; ++i) cin >> a[i];
+
+    int lastX = -1, lastY = -1;
+    int l = 1;
+    for(int r = 1; r <= n; ++r) {
+        if(a[r] == x) lastX = r;
+        if(a[r] == y) lastY = r;
+        if(a[r] > x || a[r] < y) {
+            lastX = lastY = -1;
+            l = r+1;
+        }
+        if(lastX != -1 && lastY != -1) res += min(lastX, lastY) - l+1;
+    }
+
+    return res;
     
 }
 
@@ -64,7 +79,7 @@ int solve() {
 int main() {
     cin.tie(0);
     ios::sync_with_stdio(0);
-    
-    int t; cin >> t;
-    while (t--) cout << solve() << "\n";
+    cout << solve();
+    // int t; cin >> t;
+    // while (t--) cout << solve() << "\n";
 }
