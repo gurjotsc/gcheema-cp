@@ -54,38 +54,46 @@ ll modPow(ll a, ll b, ll m) {
     return res;
 }
 
+bool visited[1501][1501][5] = {};
 
 ll solve() {
     int n; cin >> n;
     int ax, ay; cin >> ax >> ay;
-    int bx, by; cin >> sx >> sy;
-    ax--; ay--; sx--; sy--;
+    int bx, by; cin >> bx >> by;
+    ax--; ay--; bx--; by--;
+    if(ax == bx && ay == by) return 0;
     vector<string> board(n);
     cin >> board;
 
-    if(ax == sx && ay == sy) return 0;
-    queue<array<int, 4>> q;
     vector<array<int, 2>> dirs = {{1, 1}, {-1, 1}, {1, -1}, {-1, -1}}; //Bottom right, bottom left, up right, up left
-    q.push({ax, ay, 0, -1});
+    vector<vector<vector<int>>> dist(n, vector<vector<int>> (n, vector<int>(5, inf)));
+    dist[ax][ay][4] = 0;
+    queue<array<int, 4>> q; q.push({ax, ay, 0, 4});
+    int numMoves = 0;
     while(!q.empty()) {
         int sz = q.size();
         while(sz--) {
             auto curr = q.front(); q.pop();
-            if(curr[0] == sx && curr[1] == sy) return curr[2];
+            if(curr[2] != dist[curr[0]][curr[1]][curr[3]]) continue;
             for(int i = 0; i < 4; ++i) {
                 int x = curr[0] + dirs[i][0];
                 int y = curr[1] + dirs[i][1];
 
-                if(board[x][y] == '#') continue;
                 if(x < 0 || x > board.size()-1) continue;
                 if(y < 0 || y > board[0].size()-1) continue;
-
-                if(curr[3] == i) q.push({x, y, curr[2], i});
-                else q.push({x, y, curr[2]+1, i});
+                if(board[x][y] == '#' || visited[x][y][i] == 1) continue;
+                
+                int nd = curr[2] + (i != curr[3]);
+                if(nd < dist[x][y][i]) {
+                    dist[x][y][i] = nd;
+                    q.push({x, y, nd, i});
+                }
             }
         }
     }
-    return -1;
+
+    int res = *min_element(dist[bx][by].begin(), dist[bx][by].end());
+    return (res == inf) ? -1 : res;
 }
 
 
@@ -93,5 +101,27 @@ signed main() {
     cin.tie(0);
     ios::sync_with_stdio(0);
     
-    cout << solve() << "\n";
+    cout << solve();
 }
+
+
+
+// priority_queue<state> pq;
+// dist[ax][ay][4] = 0;
+// pq.push( {0, ax, ay, 4} );
+// while (!pq.empty()) {
+//     state s = pq.top();
+//     pq.pop();
+//     if (-s[0] != dist[s[1]][s[2]][s[3]]) continue;
+//     for (int i : {0,1,2,3}) {
+//         int r = s[1] + dirs[i][0];
+//         int c = s[2] + dirs[i][1];
+//         if (r < 0 || r >= N || c < 0 || c >= N) continue;
+//         if (grid[r][c] == '#') continue;
+//         int nd = -s[0] + (i != s[3]);  // new depth
+//         if (nd < dist[r][c][i]) {
+//             dist[r][c][i] = nd;
+//             pq.push( {-nd,r,c,i} );
+//         }
+//     }
+// }
