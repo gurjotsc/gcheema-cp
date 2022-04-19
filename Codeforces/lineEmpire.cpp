@@ -55,18 +55,20 @@ ll modPow(ll a, ll b, ll m) {
 }
 
 
-string solve() {
-    int n, r, b; cin >> n >> r >> b;
-    int row = r/b;
-    string temp;
-    int sz = temp.size();
-    while(sz < n) {
-        for(int i = 0; i < row; ++i) temp += 'R';
-        temp += 'B';
-        sz = temp.size();
+ll solve() {
+    int n, a, b; cin >> n >> a >> b;
+    vector<int> x(n+1); x[0] = 0;
+    for(int i = 1; i <= n; ++i) cin >> x[i];
+
+    int res = 0;
+    for(int i = 1; i <= n; ++i) {
+        int remaining = n-i+1; //plus 1 cuz its one indexed
+        int distance = x[i] - x[i-1];
+        //you should always just conquer shit unless its not costworthy to do so
+        //in that case just conquer the next kingdom and move there (a+b)
+        res += min(distance*(remaining*b), distance*(a+b));
     }
-    string res;
-    for(int i = 0; i < n; ++i) res += temp[i];
+
     return res;
 }
 
