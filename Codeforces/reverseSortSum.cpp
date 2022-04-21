@@ -4,7 +4,6 @@ using ll = long long;
 const ll inf = 1e18;
 using pii = pair<int, int>;
 using pll = pair<ll, ll>;
-#define int ll
 #define all(x) begin(x), end(x)
 
 template<typename T>
@@ -55,41 +54,27 @@ ll modPow(ll a, ll b, ll m) {
 }
 
 
-ll solve() {
-    int n, a, b; cin >> n >> a >> b;
-    vector<int> x(n+1); x[0] = 0;
-    for(int i = 1; i <= n; ++i) cin >> x[i];
-        
-
-    int res = 0;
-    bool conqueringStage = false;
-    bool movingStage = true;
-    int lockedCapitalIdx = 0;
-    for(int i = 1; i <= n; ++i) {
-        int remaining = n-i+1; //plus 1 cuz its one indexed
-        int distance = x[i] - x[i-1];
-        if(b*distance*remaining < distance*(a+b)) {
-            conqueringStage = true;
-            movingStage = false;
-        }
-
-
-        //you should always just conquer shit unless its not costworthy to do so
-        //in that case just conquer the next kingdom and move there (a+b)
-        //at the beginning you always move the capital. The point at which you start conquring, you always conquer because you can no longer move
-
-        if(movingStage) {
-            distance = x[i] - x[i-1];
-            res += (distance*(a+b));
-            lockedCapitalIdx = i;
-        }
-        if(conqueringStage) {
-            distance = x[i] - x[lockedCapitalIdx];
-            res += (b*distance);
+vector<ll> solve() {
+    ll n; cin >> n;
+    vector<ll> c(n); cin >> c;
+    vector<ll> a(n), b(n);
+    a[n-1] = (c[n-1] == n); //if c[n-1] is n then 1 is at the end in all the binary strings
+                            //if cn[n-1] is exactly 1 and n != 1, then that just means there is a 1 somewhere and it got sorted to the end in Bn (i.e, a = 0001000, then Bn = 0000001)
+    ll sum = accumulate(all(c), 0); //each 1 will appear in each of the binary strings regardless of if its sorted. This means that taking the sum and dividing by n will give you numOnes
+    ll numOnes = sum/n;
+    ll start = n-numOnes-1;
+    for(ll i = start; i < n; ++i) b[i] = n-1;
+    for(ll i = n-1; i >= 0 && i >= start; --i) {
+        ll remaining = b[i]-i; //remaining to the right
+        ll curr = c[i] - remaining; //how many times a 1 apparead - how many are to the right of it
+        if(curr == i+1) a[i] = 1;
+        else if(curr == 1) {
+            a[i] = 0; //already 0 so not needed
+            b[--start] = i-1;
         }
     }
 
-    return res;
+    return a;
 }
 
 
