@@ -55,19 +55,12 @@ ll modPow(ll a, ll b, ll m) {
 }
 
 
-void solve() {
+vector<ll> solve() {
     ll n; cin >> n;
-    vector<ll> a(n); cin >> a;
-    vector<vector<ll>> idxs(n+1);
-    for(ll i = 0; i < n; ++i) idxs[a[i]].push_back(i);
-    for(auto& i : idxs) sort(all(i));
-
-    ll q; cin >> q;
-    while(q--) {
-        int l, r, x; cin >> l >> r >> x;
-        cout << upper_bound(all(idxs[x]), r) - lower_bound(all(idxs[i]), l) //upperbound is always greater than the the element (not equal to).
-        //iterator - iterator in vector returns size_t of the distance between
-    }
+    vector<ll> a(n), b(n); cin >> a >> b;
+    ll res = -1;
+    vector<ll> dp(n);
+    for(int i )
 }
 
 
@@ -75,5 +68,5 @@ signed main() {
     cin.tie(0);
     ios::sync_with_stdio(0);
     
-    solve();
+    cout << solve();
 }
