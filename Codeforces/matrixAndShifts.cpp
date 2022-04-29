@@ -56,17 +56,26 @@ ll modPow(ll a, ll b, ll m) {
 
 
 ll solve() {
-    ll l, r; cin >> l >> r;
-    vector<ll> a(r+1); cin >> a;
-    vector<vector<ll>> cnt(17, vector<int>(2)); // stores 0 and 1 cnt
+    ll n; cin >> n;
+    ll total1s = 0;
+    vector<ll> cnt1(n, 0); //cnt 1's by column
+    for(ll i = 0; i < n; ++i){
+        string s; cin >> s;
+        ll k = (n-i == n) ? 0 : (n-i);
+        for(ll j = 0; j < n; ++j) {
+            if (s[j] == '1') {
+                total1s++;
+                cnt1[k]++; //k is column number
+            }
+            k = (k+1)%n;
+        }
+    }
+    ll res = inf;
+    for(ll i = 0; i < n; ++i) {
+        ll numZeroes = n-cnt1[i]; //numZeroes in current col
+        res = min(res, total1s-cnt1[i]+numZeroes);
+    }
 
-    for(auto i : a)
-        for(int i = 0; i < 17; ++i) cnt[i][i & (1 << i)]++;
-
-    ll res = pow(2,17);
-    for(int i = 0; i < 17; ++i)
-        if(cnt[i][1] > cnt[i][0]) res |= (1 << i);
-        else res &= ~(1 << i);
     return res;
 }
 
