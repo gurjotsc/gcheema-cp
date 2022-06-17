@@ -55,18 +55,35 @@ ll modPow(ll a, ll b, ll m) {
 }
 
 
-vector<ll> solve() {
-    ll n; cin >> n;
-    vector<ll> p(n); cin >> p;
-    if(n==1) return {-1};
-    vector<ll> q = p;
-    sort(all(q));
-    for(int i = 0; i < n; ++i) 
-        if(q[i] == p[i]) {
-            if(i == n-1) swap(q[i], q[i-1]);
-            else swap(q[i], q[i+1]);
+string solve() {
+    ll a, b; cin >> a >> b;
+    string res = "";
+    int i = 0;
+    while(a && b) {
+        if(!i) {
+            res += '0';
+            a--;
         }
-    return q;
+        else {
+            res += '1';
+            b--;
+        }
+        i = (!i);
+    }
+    while(a || b) {
+        if(a) {
+            res += '0';
+            a--;
+        }
+        else {
+            res += '1';
+            b--;
+        }
+    }
+    return res;
+
+
+
 }
 
 
