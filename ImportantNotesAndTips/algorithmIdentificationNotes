@@ -1,7 +1,7 @@
 "number of ways" or "how many ways" or "possible ways" etc. == DP (combinatorics?)
 I think "Subarrays" == dp or prefix typically
 
-**Whenever you see a tree, have these in the back of your mind
+**Note the prefixes (in, pre, post) tell you where the root goes. Then its just left and right
  Inorder (Left, Root, Right) (BST)
  Preorder (Root, Left, Right)
  Postorder (Left, Right, Root)
