@@ -56,43 +56,40 @@ ll modPow(ll a, ll b, ll m) {
 
 ll res;
 
-ll numKids(vector<vector<ll>>& g, vector<ll>& k, ll i) {
-    if(!g[i].size()) return 0;
-    for(auto& x : g[i]) k[i] += (1+numKids(g, k, x));
-    return k[i];
-}
-
-void recurse(vector<vector<ll>>& g, vector<ll>& k, ll i) {
-    //delete node with more children (node not counted)
-    //call recurse on the OTHER infected neighbors children
-    //repeat until leaf or no neighbor
-    if(!g[i].size()) return;
-    else if(g[i].size() == 1) res += k[g[i][0]];
-    else {
-        ll k1 = g[i][0], k2 = g[i][1];
-        if(k[k1] > k[k2]) {
-            res += k[k1];
-            recurse(g, k, k2);
+void dfs(vector<vector<ll>>& graph, vector<ll>& numNodes, vector<ll>& dp, ll root, ll parent) {
+    if(!root) return;
+    numNodes[root] = 1;
+    dp[root] = 0; 
+    ll l = 0, r = 0; //the two children of a root
+    for(auto& i : graph[root]) 
+        if(i != parent) { //because we push_back the parent along with the kids
+            if(!l) l = i;
+            else r = i;
         }
-        else {
-            res += k[k2];
-            recurse(g, k, k1);
-        }
-    }
+    dfs(graph, numNodes, dp, l, root);
+    dfs(graph, numNodes, dp, r, root);
+    numNodes[root] += (numNodes[l]+numNodes[r]); //get total nodes in subtree
+    //lets assume we save the right (same logic for left)
+    //then (dp[l]+numNode[r]-1) = 
+    //(how many we can save assming l gets infected)+(the number of nodes we save on the right) - (1 node since we need to delete r to save the remainder of the subtree)
+    dp[root] = max(dp[l]+numNodes[r]-1, dp[r]+numNodes[l]-1);
+    dp[root] = max(dp[root], 0ll); //in the case of a leaf node (dp[l/r]+numNodes[r/l]-1 = 0+0-1 == -1)
 }
 
 ll solve() {
     ll n; cin >> n;
-    vector<vector<ll>> g(n+1);
-    vector<ll> k(n+1, 0);
+    vector<vector<ll>> graph(n+1);
+    vector<ll> numNodes(n+1, 0); //stores total nodes of subtree at vertex root
+    vector<ll> dp(n+1, 0); //store the answer for a subtree at root i assuming i is the infected root (aka max number of nodes you can save assuming i is the infected root)
     res = 0;
+    //all nodes only have two children (says in question)
     for(int i = 0; i < n-1; ++i) {
         ll u, v; cin >> u >> v;
-        g[u].push_back(v);
+        graph[u].push_back(v);
+        graph[v].push_back(u);
     }
-    
-    ll dummy = numKids(g, k, 1);
-    recurse(g, k, 1);
+    dfs(graph, numNodes, dp, 1, 0);
+    res = dp[1];
     return res;
 }
 
