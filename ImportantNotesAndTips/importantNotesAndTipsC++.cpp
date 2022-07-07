@@ -281,3 +281,83 @@ ll accFloor(ll num, ll div) {
     if(val*div > num) --val;
     return val;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+    // vector<int> v(n+1, 0);
+    // for(int i = 1; i <= n; ++i) v[i] = a[i]+v[i-1];
+    
+    
+    
+    //   //     0 1 2  3  4  5  6  7  8  9  10
+    // //pre = {0 3 10 22 37 24 33 23 -7 33 43}
+    // a = {3 7 12 15 -13 9 -10 -30 40 10}
+    //                       i
+    // mn = 0
+    // curr = 23
+    // res = 37
+    // int res = INT_MIN;
+    // int mn = 0, curr = 0;
+    // for(int i = 0; i < n; ++i) {
+    //     if(curr < mn) mn = curr;
+    //     curr += a[i];
+    //     res = max(res, curr-mn);
+    // }
+    // return res;
+    
+    
+    // for(auto& q :  queries) {
+    //     // int l = q.first;
+    //     // int r = q.second;
+    //     auto [l, r] = q; //q = {1, 3}
+    //     int res = v[r] - v[l-1];
+    //     cout << res << " ";
+    // }
+    // 1 3 = 22
+    // 2 5 = 37
+    // 3 5 = 30
+    // 3 7 = 49
+    // 6 8 = 39
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
