@@ -1,4 +1,4 @@
-class Solution {
+sclass Solution {
     func areNumbersAscending(_ s: String) -> Bool {
         let a = s.split(separator: " ").compactMap{Int($0)}
         var prev = 0
