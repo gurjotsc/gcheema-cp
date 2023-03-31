@@ -6,7 +6,7 @@ public:
         vector<long long> p(n+1);
         for(int i = 0; i < n; ++i) p[i+1] = nums[i]+p[i];
         
-        deque<int> dq; //monotnic increasing queue. Can't use priority queue because _____________
+        deque<int> dq; //monotnic increasing deque. Can't use priority queue because need to access both first and last elements.
 
         for(int j = 0; j <= n; ++j) {
             while(!dq.empty() && p[j] <= p[dq.back()])
