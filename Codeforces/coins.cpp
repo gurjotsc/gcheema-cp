@@ -56,9 +56,9 @@ ll modPow(ll a, ll b, ll m) {
 
 
 string solve() {
-    ll n; cin >> n;
-    while(!(n%2)) n /= 2;
-    return (n == 1) ? "No" : "Yes";
+    ll n, k; cin >> n >> k;
+    if(!(n%2)) return "yEs";
+    return (k%2) ? "Yes" : "No";
 }
 
 
