@@ -56,14 +56,17 @@ ll modPow(ll a, ll b, ll m) {
 
 
 string solve() {
-    ll nl cin >> j;
+    ll n; cin >> n;
     string s; cin >> s;
     bool type = false;
     for(int i = 0; i < n; ++i, type = !type) {
-        if(!type) ++i;
+        if(!type) {
+            ++i;
+            if(i == n-1) return "NO";
+        }
         else if(s[i] != s[i-1]) return "NO";
     }
-    return "YES"
+    return "YES";
 }
 
 

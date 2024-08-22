@@ -59,9 +59,9 @@ ll modPow(ll a, ll b, ll m) {
 
 schlong solve() {
     string s; cin >> s;
-    schlong res = 0;
+    schlong res = 1;
     if(s[0] == '0')
-        return res;
+        return 0;
     
     for(int i = 0; i < s.size(); ++i) 
         if(s[i] == '?')

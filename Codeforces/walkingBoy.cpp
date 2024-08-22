@@ -55,25 +55,23 @@ ll modPow(ll a, ll b, ll m) {
 }
 
 
-string solve() {
-    ll n; cin >> n;
+ll solve() {
+    ll n, x; cin >> n >> x;
 	vector<ll> a(n); cin >> a;
-    vector<bool> msgs(1441);
-	ll walks = 0;
-	for(auto& i : a) msgs[i] = true;
-    int prev = -1;
-    for(int i = 0; i < 1441; ++i) {
-        if(i-prev >= 120) {
-            prev = i;
-            ++walks;
-        }
-        if(msgs[i]) {
-            prev = i;
+    vector<ll> p(n+1, 0ll);
+    mao<ll, ll> m;
+    ll res = -1;
+    for(int i = 0; i < n; ++i) p[i+1] = p[i]+a[i];
+    for(int i = 1; i <= n; ++i) {
+        ll rem = p[i]%x;
+        if(m.count(rem))
             continue;
-        }
+        else m[rem] = i;
+    }
+    for(int i = 1; i <= n; ++i) {
+        
     }
 
-	return (walks >= 2) ? "yEs" : "nO";
 }
 
 
